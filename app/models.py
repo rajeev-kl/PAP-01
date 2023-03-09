@@ -9,6 +9,8 @@ class Country(models.Model):
     population = models.CharField(max_length=20)
     land_area = models.CharField(max_length=20)
     waste_generated = models.CharField(max_length=20)
+    machines_required = models.CharField(max_length=20, null=True)
+    investment_required = models.CharField(max_length=20, null=True)
     country_code = models.CharField(max_length=3, null=True)
     country_flag = models.URLField(null=True)
 

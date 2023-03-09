@@ -3,8 +3,6 @@ from django.shortcuts import render
 
 # external imports
 from rest_framework import serializers, viewsets
-from rest_framework.generics import ListAPIView
-from rest_framework.response import Response
 
 # local imports
 from .models import Country, UserInfo
