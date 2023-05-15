@@ -11,4 +11,7 @@ router = routers.SimpleRouter()
 router.register(r"country", CountryView)
 router.register(r"user", UserView)
 
-urlpatterns = [path("", include(router.urls))]
+urlpatterns = [
+    path("", include(router.urls)),
+    path("users/download/", UserView.as_view({"get": "download_csv"})),
+]

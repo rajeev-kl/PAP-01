@@ -32,4 +32,14 @@ class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = ()
     authentication_classes = ()
-    http_method_names = ["post"]
+    http_method_names = ["post", "get"]
+
+    def download_csv(self, request):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment;filename=export.csv'
+        writer = csv.writer(response)
+        field_names = ["id", "country", "org_name", "role", "name", "email", "phone"]
+        writer.writerow(field_names)
+        for obj in self.queryset:
+            writer.writerow([getattr(obj, field) for field in field_names])
+        return response
